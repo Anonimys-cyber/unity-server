@@ -1,1 +1,1 @@
-<?php echo "Unity Server is running."; ?>
+<?php readfile("index.html"); ?>

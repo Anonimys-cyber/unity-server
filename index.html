@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cosmo Conquent</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      background: radial-gradient(ellipse at bottom, #0d1b2a 0%, #000000 100%);
+      overflow: hidden;
+      color: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .stars, .planets, .ships {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      width: 2px;
+      height: 2px;
+      animation: twinkle 2s infinite ease-in-out;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; }
+    }
+
+    .planet {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, #7f5af0, #2b2d42);
+      border-radius: 50%;
+      top: 80%;
+      left: 10%;
+      box-shadow: 0 0 50px #7f5af0;
+    }
+
+    .planet2 {
+      width: 70px;
+      height: 70px;
+      top: 20%;
+      left: 80%;
+      background: radial-gradient(circle, #ff6b6b, #370617);
+      box-shadow: 0 0 30px #ff6b6b;
+    }
+
+    .ship {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      animation: fly 10s linear infinite;
+    }
+
+    .ship-img {
+        width: 100%;
+        height: 100%;
+        transform: rotate(45deg); /* Тут обертання працює ідеально */
+    }
+
+    .ship2 {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      animation: fly-left 10s linear infinite;
+    }
+    .ship-img2 {
+        width: 100%;
+        height: 100%;
+        transform: rotate(-45deg); /* Тут обертання працює ідеально */
+    }
+
+    @keyframes fly {
+      0% { transform: translateX(-100px) translateY(0); }
+      100% { transform: translateX(110vw) translateY(-100vh); }
+    }
+
+    @keyframes fly-left {
+    0% { transform: translateX(100px) translateY(0); }
+    100% { transform: translateX(-110vw) translateY(-100vh); }
+    }
+
+
+    .welcome {
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 10;
+    }
+
+    .welcome h1 {
+      font-size: 4rem;
+      text-shadow: 0 0 10px #ffffff, 0 0 20px #7f5af0;
+    }
+
+    .welcome p {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      text-shadow: 0 0 5px #ffffff;
+    }
+  </style>
+</head>
+<body>
+  <div class="stars">
+    <!-- 50 random stars -->
+    <script>
+      for(let i = 0; i < 50; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.left = Math.random() * 100 + '%';
+        document.querySelector('.stars').appendChild(star);
+      }
+    </script>
+  </div>
+
+  <div class="planets">
+    <div class="planet"></div>
+    <div class="planet planet2"></div>
+  </div>
+
+  <div class="ships">
+    <div class="ship" style="top: 80%; left: -40px;">
+        <img src="spaceship.png" class="ship-img" />
+    </div>
+
+    <div class="ship" style="top: 60%; left: -100px; animation-delay: 2s;">
+        <img src="spaceship.png" class="ship-img" />
+    </div>
+    <div class="ship" style="top: 90%; left: -200px; animation-delay: 4s;">
+        <img src="spaceship.png" class="ship-img" />
+    </div>
+  </div>
+
+    <div class="ships">
+    <div class="ship2" style="top: 80%; right: -40px;  animation-delay: 1s;">
+        <img src="spaceship.png" class="ship-img2" />
+    </div>
+
+    <div class="ship2" style="top: 60%; right: -100px; animation-delay: 2.5s;">
+        <img src="spaceship.png" class="ship-img2" />
+    </div>
+    <div class="ship2" style="top: 90%; right: -200px; animation-delay: 3.5s;">
+        <img src="spaceship.png" class="ship-img2" />
+    </div>
+  </div>
+
+  <div class="welcome">
+    <h1>Welcome to Cosmo Conquent</h1>
+    <p>Prepare for galactic conquest!</p>
+  </div>
+</body>
+</html>
